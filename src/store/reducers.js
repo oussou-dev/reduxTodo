@@ -1,38 +1,49 @@
 import * as actions from "./actions"
 
-export const todosReducer = (state, action) => {
+// {
+// 	todos: [],
+// 	filter: ''
+// }
+
+export const todoReducer = (state, action) => {
 	switch (action.type) {
 		case actions.ADD_TODO: {
-			return {
-				...state,
-				todos: [...state.todos, action.todo]
-			}
+			return [...state, action.todo]
 		}
+
 		case actions.DELETE_TODO: {
-			return {
-				...state,
-				todos: state.todos.filter((t, i) => i !== action.index)
-			}
+			return state.filter((t, i) => i !== action.index)
 		}
-		case actions.SET_FILTER: {
-			return {
-				...state,
-				filter: action.filter
-			}
-		}
+
 		case actions.TOGGLE_TODO: {
-			return {
-				...state,
-				todos: state.todos.map((t, i) => {
-					if (i === action.index) {
-						t.done = !t.done
-					}
-					return t
-				})
-			}
+			return state.map((t, i) => {
+				if (i === action.index) {
+					t.done = !t.done
+				}
+				return t
+			})
 		}
 		default: {
 			return state
 		}
+	}
+}
+
+export const filterReducer = (state, action) => {
+	switch (action.type) {
+		case actions.SET_FILTER: {
+			return action.filter
+		}
+
+		default: {
+			return state
+		}
+	}
+}
+
+export const todosReducer = (state, action) => {
+	return {
+		todos: todoReducer(state.todos, action),
+		filter: filterReducer(state.filter, action)
 	}
 }
