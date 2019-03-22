@@ -5,6 +5,7 @@ const TodoList = props => {
 	return (
 		<ul className="list-group">
 			<TodoItem />
+			<TodoItem />
 		</ul>
 	)
 }
