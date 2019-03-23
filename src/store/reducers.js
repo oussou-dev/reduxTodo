@@ -1,5 +1,5 @@
 import * as actions from "./actions"
-import combineReducers from "redux"
+// import combineReducers from "redux"
 
 export const todos = (state = [], action) => {
 	switch (action.type) {
@@ -40,4 +40,4 @@ export const filter = (
 	}
 }
 
-export const todosReducer = combineReducers({ todos, filter })
+// export const todosReducer = combineReducers({ todos, filter })
