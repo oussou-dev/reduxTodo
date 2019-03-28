@@ -2,30 +2,24 @@ import React from "react"
 import { connect } from "react-redux"
 import { setFilter, visibilityFilters } from "../store/actions"
 
-const Filter = ({ dispatch }) => {
+const Filter = ({ setFilter }) => {
 	return (
 		<>
 			<button
 				className="btn btn-primary mr-2"
-				onClick={() =>
-					dispatch(setFilter(visibilityFilters.SHOW_ALL))
-				}
+				onClick={() => setFilter(visibilityFilters.SHOW_ALL)}
 			>
 				Tout
 			</button>
 			<button
 				className="btn btn-info mr-2"
-				onClick={() =>
-					dispatch(setFilter(visibilityFilters.SHOW_DONE))
-				}
+				onClick={() => setFilter(visibilityFilters.SHOW_DONE)}
 			>
 				Fini
 			</button>
 			<button
 				className="btn btn-info"
-				onClick={() =>
-					dispatch(setFilter(visibilityFilters.SHOW_ACTIVE))
-				}
+				onClick={() => setFilter(visibilityFilters.SHOW_ACTIVE)}
 			>
 				En cours
 			</button>
@@ -33,4 +27,9 @@ const Filter = ({ dispatch }) => {
 	)
 }
 
-export default connect()(Filter)
+export default connect(
+	null,
+	{
+		setFilter
+	}
+)(Filter)
