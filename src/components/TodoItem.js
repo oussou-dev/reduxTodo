@@ -8,7 +8,12 @@ const TodoItem = ({ todo, toggleTodo, deleteTodo }) => {
 		>
 			<span>{todo.name}</span>
 			<span>
-				<input className="mx-3" type="checkbox" />
+				<input
+					checked={todo.done}
+					onChange={() => {}}
+					className="mx-3"
+					type="checkbox"
+				/>
 				<button
 					onClick={e => {
 						e.stopPropagation()
